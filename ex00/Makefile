@@ -2,7 +2,7 @@ CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 NAME	= polymorphism
-CLASSES	= Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp Wrong Cat.cpp
+CLASSES	= Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 HEADERS	= $(patsubst %.cpp,%.hpp,$(CLASSES))
 SRCS	= main.cpp $(CLASSES)
 OBJDIR	= obj
