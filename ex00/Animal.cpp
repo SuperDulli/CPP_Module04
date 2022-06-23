@@ -19,7 +19,7 @@ Animal::~Animal(void) {
 }
 
 Animal&	Animal::operator=(Animal const& other) {
-	std::cout << "Animal copy assignmet operator called" << std::endl;
+	std::cout << "Animal copy assignment operator called" << std::endl;
 	this->m_type = other.m_type;
 	return *this;
 }
