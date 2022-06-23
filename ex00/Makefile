@@ -1,5 +1,5 @@
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -Wshadow
+CXX		= c++
+CXXFLAGS= -Wall -Wextra -Werror -std=c++98 -Wshadow
 
 NAME	= polymorphism
 CLASSES	= Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
@@ -25,17 +25,17 @@ show:
 	@echo OBJS=$(OBJS)
 
 debug: fclean
-debug: CFLAGS := $(CFLAGS) -g
+debug: CXXFLAGS := $(CXXFLAGS) -g
 debug: all
 
 leaks: $(NAME)
 	leaks --atExit -- ./$(NAME)
 
 $(NAME): $(OBJS) $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR):
 	mkdir $(OBJDIR)
