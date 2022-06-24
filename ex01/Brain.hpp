@@ -12,29 +12,21 @@ public:
 	Brain(Brain const& other);
 	~Brain(void);
 
-	Brain& operator=(Brain const& other);
+	Brain&	operator=(Brain const& other);
+	bool	operator==(Brain const& other);
 
 	std::string const*	getIdeas(void) const;
-	void				setIdeas(std::string const ideas[100]);
+	void				setIdeas(std::string const* ideas, size_t count);
 
 	std::string	getIdea(int n) const;
 	void		setIdea(int n, std::string const& idea);
 
 private:
 
-	// static int const	maxIdeaCount = 100;
-
 	std::string	m_ideas[100];
-
 
 };
 
-std::ostream&	operator<<(std::ostream& os, Brain const& brain) {
-	for (size_t i = 0; i < 100; i++)
-	{
-		os << brain.getIdea(i) << std::endl;
-	}
-	return os;
-}
+std::ostream&	operator<<(std::ostream& os, Brain const& brain);
 
 #endif

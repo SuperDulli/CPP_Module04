@@ -28,8 +28,11 @@ debug: fclean
 debug: CXXFLAGS := $(CXXFLAGS) -g
 debug: all
 
-leaks: $(NAME)
+leaks: all
 	leaks --atExit -- ./$(NAME)
+
+test: all
+	./$(NAME)
 
 $(NAME): $(OBJS) $(SRCS) $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
@@ -40,4 +43,4 @@ $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 $(OBJDIR):
 	mkdir $(OBJDIR)
 
-.PHONY: all clean fclean re show debug leaks
+.PHONY: all clean fclean re show debug leaks test

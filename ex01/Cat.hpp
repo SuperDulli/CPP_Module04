@@ -4,7 +4,7 @@
 #include <string>
 #include "Animal.hpp"
 
-class Cat : private Animal {
+class Cat : public Animal {
 
 	public:
 
@@ -13,11 +13,13 @@ class Cat : private Animal {
 		~Cat(void);
 
 		Cat&	operator=(Cat const& other);
+		bool	operator==(Cat const& other);
 
-		Brain*	getBrain(void) const;
-		void	setBrain(Brain* brain);
+		Brain&	getBrain(void) const;
+		// void	setBrain(Brain* brain);
 
 		void	makeSound(void) const;
+		void	thinkAbout(std::string const ideas[100]);
 
 	private:
 

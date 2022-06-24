@@ -3,6 +3,7 @@
 
 #include <string>
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal {
 
@@ -14,7 +15,14 @@ class Dog : public Animal {
 
 		Dog&	operator=(Dog const& other);
 
+		Brain&	getBrain(void) const;
+
 		void	makeSound(void) const;
+		void	thinkAbout(std::string const ideas[100]);
+
+	private:
+
+		Brain*	m_brain;
 
 };
 

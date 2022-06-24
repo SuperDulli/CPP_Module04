@@ -2,16 +2,18 @@
 #include <string>
 #include "Dog.hpp"
 
-Dog::Dog(void): Animal("Dog") {
+Dog::Dog(void): Animal("Dog"), m_brain(new Brain()) {
 	std::cout << "Default Dog Constructor called" << std::endl;
 }
 
 Dog::Dog(Dog const& other): Animal(other.m_type) {
 	std::cout << "Dog Copy Constructor called" << std::endl;
+	*this = other;
 }
 
 Dog::~Dog(void) {
 	std::cout << "Dog Destructor called" << std::endl;
+	delete m_brain;
 }
 
 Dog&	Dog::operator=(Dog const& other) {
@@ -19,9 +21,18 @@ Dog&	Dog::operator=(Dog const& other) {
 	Animal::operator=(other);
 
 	this->m_type = other.m_type;
+	this->thinkAbout(other.getBrain().getIdeas());
 	return *this;
+}
+
+Brain&	Dog::getBrain(void) const {
+	return *m_brain;
 }
 
 void	Dog::makeSound(void) const {
 	std::cout << "* woof wuff *" << std::endl;
+}
+
+void	Dog::thinkAbout(std::string const ideas[100]) {
+	this->m_brain->setIdeas(ideas, 100);
 }

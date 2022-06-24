@@ -12,7 +12,6 @@ Animal::Animal(std::string type): m_type(type) {
 
 Animal::Animal(Animal const& other): m_type(other.m_type) {
 	std::cout << "Animal Copy Constructor called" << std::endl;
-	// *this = other;
 }
 
 Animal::~Animal(void) {
