@@ -17,17 +17,11 @@ class Animal {
 
 		std::string	getType(void) const;
 
-		// Brain*	getBrain(void) const;
-		// void	setBrain(Brain* brain);
-		
-		// virtual void	printIdeas(void) const;
-
 		virtual void	makeSound(void) const;
 
 	protected:
 
 		std::string	m_type;
-		// Brain*		m_brain;
 
 };
 
