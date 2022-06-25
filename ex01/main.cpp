@@ -6,16 +6,14 @@
 #include "Dog.hpp"
 
 int	main(void) {
-	std::string	catIdea = "I like cardboard boxes.";
 	std::cout << "--- Test begin ---" << std::endl;
 	{
 		std::cout << "Test from subject:" << std::endl;
-		
+
 		Animal const* cat = new Cat();
-		
+
 		delete cat;
 
-		// std::cout << catIdea << std::endl;
 		std::cout << std::string(80, '-') << std::endl;
 	}
 	{
@@ -49,15 +47,12 @@ int	main(void) {
 		a.setIdea(100, "Outside");
 		a.setIdea(-42, "Negative");
 		std::cout << a << std::endl;
-		
+
 		std::cout << std::string(80, '-') << std::endl;
 	}
 	std::cout << std::string(80, '-') << std::endl;
 	{
 		std::cout << "Testing Animals with brains" << std::endl;
-
-		// Brain	stackBrain;
-		// Brain*	heapBrain = new Brain();
 
 		Animal*	animal;
 		Cat*	cat = new Cat();
@@ -66,18 +61,15 @@ int	main(void) {
 		std::string	ideas[100] = {"Set", "the", "world", "on", "fire"};
 		std::string	dogIdeas[100] = {"Bring", "bark", "back", "wuff", "the", "whoooo", "ball"};
 
-		// stackBrain.setIdeas(ideas, 100);
-
-		// cat->setBrain(&stackBrain);
 		cat->thinkAbout(ideas);
-		// stackBrain.setIdea(2, std::string("tree"));
+		ideas[2] = "Tree"; // should not affect the idea inside the brain
 		std::cout << "cat thinks about:" << std::endl;
 		std::cout << cat->getBrain() << std::endl;
 
 		dog->thinkAbout(dogIdeas);
 		std::cout << "dog thinks about:" << std::endl;
 		std::cout << dog->getBrain() << std::endl;
-		
+
 		animal = cat;
 
 		std::cout << std::string(80, '-') << std::endl;
@@ -89,7 +81,6 @@ int	main(void) {
 		Dog	copyDog2(*dog);
 
 		// Dog* copyDog3 = cat; // cats can't be copied to dogs
-		// copyCat1 = *cat;
 		if (*cat == copyCat1) {
 			std::cout << "same cats" << std::endl;
 		}
@@ -121,7 +112,7 @@ int	main(void) {
 		// Animal*	zoo = new Animal[zooSize];
 		Animal*		zoo[zooSize];
 
-		std::cout << "populate the zoo" << std::endl; 
+		std::cout << "populate the zoo" << std::endl;
 		for (size_t i = 0; i < zooSize / 2; i++)
 		{
 			zoo[i] = new Cat();
@@ -131,22 +122,14 @@ int	main(void) {
 			zoo[i] = new Dog();
 		}
 		std::cout << std::endl;
-		
+
 		std::cout << "destroying the zoo" << std::endl;
 		for (size_t i = 0; i < zooSize; i++)
 		{
 			std::cout << "deleting animal #" << i << std::endl;
 			delete zoo[i];
-		}	
+		}
 	}
-
-	// std::cout << cat->getBrain() << std::endl;
-
 
 	return 0;
 }
-
-
-// void	testDeepCopy(Animal const& a, Animal const& b) {
-
-// }

@@ -6,7 +6,7 @@ Dog::Dog(void): Animal("Dog"), m_brain(new Brain()) {
 	std::cout << "Default Dog Constructor called" << std::endl;
 }
 
-Dog::Dog(Dog const& other): Animal(other.m_type) {
+Dog::Dog(Dog const& other): Animal(other.m_type), m_brain(new Brain()) {
 	std::cout << "Dog Copy Constructor called" << std::endl;
 	*this = other;
 }
@@ -23,6 +23,15 @@ Dog&	Dog::operator=(Dog const& other) {
 	this->m_type = other.m_type;
 	this->thinkAbout(other.getBrain().getIdeas());
 	return *this;
+}
+
+bool	Dog::operator==(Dog const& other) {
+	std::cout << "Comparing two dogs" << std::endl;
+
+	bool typeAtSameAdress = (&this->m_type == &other.m_type);
+	bool brainIsSame = (*this->m_brain == *other.m_brain);
+
+	return (typeAtSameAdress && brainIsSame);
 }
 
 Brain&	Dog::getBrain(void) const {

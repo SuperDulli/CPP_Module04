@@ -26,13 +26,12 @@ bool	Brain::operator==(Brain const& other) {
 	std::cout << "Comparing brains" << std::endl;
 	std::cout << &this->m_ideas << std::endl;
 	std::cout << &other.m_ideas << std::endl;
-	std::cout << &this->m_ideas - &other.m_ideas << std::endl;
 
 	return (&this->m_ideas == &other.m_ideas);
 }
 
 std::string const*	Brain::getIdeas(void) const {
-	return &m_ideas[0]; 
+	return &m_ideas[0];
 }
 
 void	Brain::setIdeas(std::string const* ideas, size_t count) {

@@ -21,7 +21,7 @@ Cat&	Cat::operator=(Cat const& other) {
 	Animal::operator=(other);
 
 	this->m_type = other.m_type;
-	this->m_brain->setIdeas(other.getBrain()->getIdeas(), 100);
+	this->m_brain->setIdeas(other.getBrain().getIdeas(), 100);
 	return *this;
 }
 
@@ -29,17 +29,12 @@ bool	Cat::operator==(Cat const& other) {
 	std::cout << "Comparing two cats" << std::endl;
 
 	bool typeAtSameAdress = (&this->m_type == &other.m_type);
-	bool brainAtSameAdress = (&this->m_brain == &other.m_brain);
+	bool brainIsSame = (*this->m_brain == *other.m_brain);
 
-	return (typeAtSameAdress && brainAtSameAdress);
+	return (typeAtSameAdress && brainIsSame);
 }
 
 Brain&	Cat::getBrain(void) const { return *m_brain; }
-
-// void	Cat::setBrain(Brain* brain) {
-// 	std::cout << "setting the brain for " << m_type << std::endl;
-// 	this->m_brain = brain;
-// }
 
 void	Cat::makeSound(void) const {
 	std::cout << "* meow miau *" << std::endl;

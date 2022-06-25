@@ -14,6 +14,7 @@ class Dog : public Animal {
 		~Dog(void);
 
 		Dog&	operator=(Dog const& other);
+		bool	operator==(Dog const& other);
 
 		Brain&	getBrain(void) const;
 
