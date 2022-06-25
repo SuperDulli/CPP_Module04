@@ -31,6 +31,9 @@ debug: all
 leaks: all
 	leaks --atExit -- ./$(NAME)
 
+valgrind: debug
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+
 test: all
 	./$(NAME)
 
@@ -43,4 +46,4 @@ $(OBJDIR)/%.o: %.cpp | $(OBJDIR)
 $(OBJDIR):
 	mkdir $(OBJDIR)
 
-.PHONY: all clean fclean re show debug leaks test
+.PHONY: all clean fclean re show debug leaks test valgrind
