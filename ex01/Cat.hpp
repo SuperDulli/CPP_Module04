@@ -16,7 +16,6 @@ class Cat : public Animal {
 		bool	operator==(Cat const& other);
 
 		Brain&	getBrain(void) const;
-		// void	setBrain(Brain* brain);
 
 		void	makeSound(void) const;
 		void	thinkAbout(std::string const ideas[100]);
