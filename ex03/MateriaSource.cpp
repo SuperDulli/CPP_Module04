@@ -3,9 +3,12 @@
 #include "Color.hpp"
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) {}
+MateriaSource::MateriaSource(void) {
+	this->initMaterias();
+}
 
 MateriaSource::MateriaSource(MateriaSource const& other) {
+	this->initMaterias();
 	*this = other;
 }
 
@@ -27,7 +30,7 @@ void MateriaSource::learnMateria(AMateria* m) {
 	for (size_t i = 0; i < 4; i++)
 	{
 		if (!this->m_materias[i]) {
-			this->m_materias[i] = m->clone();
+			this->m_materias[i] = m;
 			std::cout
 			<< "MateriaSource: " << m->getType() << " added at index " << i
 			<< std::endl;
@@ -57,6 +60,13 @@ AMateria* MateriaSource::createMateria(std::string const& type) {
 	<< Color::Modifier()
 	<< std::endl;
 	return NULL;
+}
+
+void MateriaSource::initMaterias(void) {
+	for (size_t i = 0; i < 4; i++)
+	{
+		this->m_materias[i] = NULL;
+	}
 }
 
 void MateriaSource::clearMaterias(void) {

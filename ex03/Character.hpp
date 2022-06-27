@@ -22,11 +22,14 @@ public:
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
 
+	AMateria* getMateria(int idx);
+
 private:
 
 	std::string	m_name;
 	AMateria*	m_inventory[4];
 
+	void	initInventory(void);
 	void	clearInventory(void);
 
 };

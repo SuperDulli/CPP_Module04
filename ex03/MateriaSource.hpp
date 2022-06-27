@@ -21,6 +21,7 @@ private:
 
 	AMateria*	m_materias[4];
 
+	void	initMaterias(void);
 	void	clearMaterias(void);
 
 };

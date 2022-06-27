@@ -3,9 +3,13 @@
 #include "Color.hpp"
 #include "Character.hpp"
 
-Character::Character(void) {}
+Character::Character(void) {
+	this->initInventory();
+}
 
-Character::Character(std::string const& name): m_name(name) {}
+Character::Character(std::string const& name): m_name(name) {
+	this->initInventory();
+}
 
 Character::Character(Character const& other): m_name(other.m_name) {
 	*this = other;
@@ -43,13 +47,13 @@ void Character::equip(AMateria* m) {
 	}
 	std::cerr
 	<< Color::Modifier(Color::FG_RED)
-	<< this->m_name << "can't equip " << m->getType() << ": Full inventory"
+	<< this->m_name << " can't equip " << m->getType() << ": Full inventory"
 	<< Color::Modifier()
 	<< std::endl;
 }
 
 void Character::unequip(int idx) {
-	if (idx < 0 || 4 >= idx) {
+	if (idx < 0 || 4 <= idx) {
 		std::cerr
 		<< Color::Modifier(Color::FG_RED)
 		<< this->m_name << " can't unequip Materia at index " << idx
@@ -90,6 +94,26 @@ void Character::use(int idx, ICharacter& target) {
 		return;
 	}
 	this->m_inventory[idx]->use(target);
+}
+
+AMateria* Character::getMateria(int idx) {
+	if (idx < 0 || 4 <= idx) {
+		std::cerr
+		<< Color::Modifier(Color::FG_RED)
+		<< this->m_name << " can't get Materia at index " << idx
+		<< ": index out of bounds"
+		<< Color::Modifier()
+		<< std::endl;
+		return NULL;
+	}
+	return this->m_inventory[idx];
+}
+
+void Character::initInventory(void) {
+	for (size_t i = 0; i < 4; i++)
+	{
+		this->m_inventory[i] = NULL;
+	}
 }
 
 void Character::clearInventory(void) {
